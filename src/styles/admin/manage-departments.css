@@ -1,0 +1,36 @@
+.hidden {
+  display: none;
+}
+
+.empty-field {
+  border: 1px solid red;
+  background-color: #fd9797;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.empty-field::placeholder {
+  color: #fff;
+}
+#departments {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#departments .department {
+  border: 1px solid #000;
+  padding: 0 20px;
+}
+
+.department .desc {
+  text-overflow: clip;
+}
+
+.offcanvas-custom {
+  height: qvh;
+  overflow: auto;
+}
