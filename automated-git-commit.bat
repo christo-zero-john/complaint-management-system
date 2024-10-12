@@ -18,5 +18,5 @@ for /f "tokens=*" %%f in ('git ls-files --others --exclude-standard') do (
 
 @REM After commiting push to origin
 
-Starting push to Origin
+echo Starting push to Origin
 git push
