@@ -15,3 +15,6 @@ for /f "tokens=*" %%f in ('git ls-files --others --exclude-standard') do (
     git add "%%f"
     git commit -m "Found new file,  %%f. Committing Via Global Bash Script:git-status-automated.bat"
 )
+
+@REM After commiting push to origin
+git push
