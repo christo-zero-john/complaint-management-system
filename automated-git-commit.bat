@@ -3,27 +3,27 @@
 @echo off
 
 git ls-files -m
-echo "\n"
-echo "\n"
-echo "\n"
+echo 
+echo 
+echo 
 for /f "tokens=*" %%f in ('git ls-files -m') do (
     git add "%%f"
     git commit -m "Found modified or deleted file,  %%f. Committing Via Global Bash Script:git-status-automated.bat"
 )
 
-echo "\n"
-echo "\n"
-echo "\n"
+echo 
+echo 
+echo 
 
 
 @REM check for new files and commit them
-echo "\n"
-echo "\n"
-echo "\n"
+echo 
+echo 
+echo 
 git ls-files --others --exclude-standard
-echo "\n"
-echo "\n"
-echo "\n"
+echo 
+echo 
+echo 
 for /f "tokens=*" %%f in ('git ls-files --others --exclude-standard') do (
     git add "%%f"
     git commit -m "Found new file,  %%f. Committing Via Global Bash Script:git-status-automated.bat"
@@ -31,9 +31,9 @@ for /f "tokens=*" %%f in ('git ls-files --others --exclude-standard') do (
 
 @REM After commiting push to origin
 
-echo "\n"
+echo 
 echo Starting push to Origin
-echo "\n"
-echo "\n"
+echo 
+echo 
 
 git push
