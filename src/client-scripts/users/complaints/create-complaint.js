@@ -5,7 +5,6 @@ const server = "http://localhost/Complaint%20Management%20System/backend";
 fetchCategories();
 fetchDepartments();
 
-
 let fields = {
   "complaint-title": document.getElementById("complaint-title"),
   "complaint-description": document.getElementById("complaint-description"),
@@ -18,14 +17,14 @@ function createComplaint(event) {
   // Prevent default form submission
   event.preventDefault();
 
-  let complaintName = fields["complaint-title"].value;
+  let complaintTitle = fields["complaint-title"].value;
   let complaintDescription = fields["complaint-description"].value;
   let complaintCategory = fields["complaint-category"].value;
   let complaintDepartment = fields["complaint-department"].value;
   let complaintVisibility = fields["complaint-visibility"].checked;
 
   let missingFields = [];
-  if (!complaintName) {
+  if (!complaintTitle) {
     missingFields.push("Title");
     fields["complaint-title"].classList.add("empty-field");
   }
@@ -45,20 +44,23 @@ function createComplaint(event) {
     fields["complaint-department"].classList.add("empty-field");
   }
 
-  if (!complaintVisibility) {
-    missingFields.push("Visibility");
-    fields["complaint-visibility"].classList.add("empty-field");
-  }
-
   // If some field values are missing notify that.
   if (missingFields.length > 0) {
     newNotification(`${missingFields.join(", ")} missing`);
   }
   // If all field values are received, send the data to the server.
   else {
+    let userData = JSON.parse(localStorage.getItem("user"));
+    console.log(userData);
+
     let data = {
-      name: complaintName,
+      title: complaintTitle,
       description: complaintDescription,
+      category: complaintCategory,
+      department: complaintDepartment,
+      visibility: complaintVisibility,
+      user: userData.id,
+      created_on: getToday(),
     };
 
     let request = {
@@ -93,7 +95,7 @@ function createComplaint(event) {
         // If server returned status as success, then display success message
         else {
           newNotification("Complaint created successfully.");
-          window.location.reload();
+            window.location.reload();
         }
       });
   }
@@ -115,7 +117,6 @@ function fetchCategories() {
         let categories = data.returned;
 
         newNotification("Setting Category options");
-        fields["complaint-category"].innerHTML = "";
 
         categories.forEach((category) => {
           fields[
@@ -143,7 +144,7 @@ function fetchDepartments() {
         let departments = data.returned;
 
         newNotification("Setting Department options");
-        fields["complaint-department"].innerHTML = "";
+
         departments.forEach((department) => {
           fields[
             "complaint-department"
@@ -154,7 +155,13 @@ function fetchDepartments() {
     });
 }
 
-function fetchDepartments() {}
+function getToday() {
+  let today = new Date();
+  let day = String(today.getDate()).padStart(2, "0");
+  let month = String(today.getMonth() + 1).padStart(2, "0");
+  let year = today.getFullYear();
+  return year + "-" + month + "-" + day;
+}
 
 // Event Listners
 /**
