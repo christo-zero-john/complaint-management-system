@@ -28,7 +28,7 @@ $response = [
 ];
 
 try {
-    pushLog("Initializing get all Users");
+    pushLog("Initializing get User By ID");
     $database = connectDB();
     pushLog("Connected with Database Successfully");
 
@@ -68,10 +68,10 @@ function fetchUser()
                 }
             }
             if ($user["id"] == $UiD) {
-                pushLog("User fetched successfully");
+                pushLog("Account fetched successfully");
                 $response["returned"] = $user;
             } else {
-                throw new Error("User Not Found");
+                throw new Error("Account Not Found");
             }
         }
     } catch (\Throwable $error) {
