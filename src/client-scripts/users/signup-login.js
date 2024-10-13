@@ -201,9 +201,12 @@ function loginToAccount() {
 
       if (data.returned.login == 1) {
         console.log("Saving User data: ", data.returned);
-        localStorage.setItem("user", JSON.stringify(data.returned));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ id: data.returned.mail })
+        );
         newNotification("Logged in Successfully.");
-        // window.location.href = "../admin/dashboard.html";
+        window.location.href = "../admin/dashboard.html";
       }
     });
 }
@@ -227,9 +230,9 @@ function loginToAccount() {
 document.addEventListener("DOMContentLoaded", (e) => {
   let user = JSON.parse(localStorage.getItem("user"));
   // console.log(user);
-  if (user && user.hasOwnProperty("mail")) {
+  if (user && user.hasOwnProperty("id")) {
     newNotification("Already Logged In.");
-    window.location.href = "../admin/dashboard.html";
+    window.location.href = "../user/dashboard.html";
   } else {
     show("login-form");
   }
