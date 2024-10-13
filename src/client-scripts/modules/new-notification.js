@@ -43,7 +43,7 @@ function newNotification(message, timeout) {
     timeout = 5000;
   }
 
-  console.log("Timeout is: ", timeout);
+  // console.log("Timeout is: ", timeout);
 
   setTimeout(() => {
     bootstrapToast.hide();
