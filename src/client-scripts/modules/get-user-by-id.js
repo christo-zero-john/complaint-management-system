@@ -13,13 +13,9 @@ async function getUserById(UiD) {
     return fetch(server + "/api/user/get-user-by-id.php", request)
       .then((res) => res.json())
       .then((data) => {
-        //   console.log(data);
         return data.returned;
       });
   } else {
-    return {
-      name: "Empty Slot",
-      id: "",
-    };
+    throw new Error("User ID not specified");
   }
 }
