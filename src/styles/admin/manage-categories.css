@@ -1,0 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.empty-field {
+  border: 1px solid red;
+  background-color: #fd9797;
+  border-radius: 3px;
+  color: #fff;
+}
+
+form input {
+  z-index: 0 !important;
+}
+
+.empty-field::placeholder {
+  color: #fff;
+}
