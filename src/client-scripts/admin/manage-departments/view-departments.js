@@ -1,7 +1,5 @@
 console.log("View Departments script connected loaded successfully");
 
-viewDepartments();
-
 function viewDepartments() {
   newNotification("Starting to display all departments");
   console.log("Fetching all departments");
@@ -53,3 +51,5 @@ function viewDepartments() {
       }
     });
 }
+
+export { viewDepartments };
