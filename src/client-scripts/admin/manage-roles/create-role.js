@@ -1,7 +1,5 @@
 console.log("Create role script loaded successfully");
 
-const server = "http://localhost/Complaint%20Management%20System/backend";
-
 let fields = {
   "role-name": document.getElementById("role-name"),
   "role-description": document.getElementById("role-description"),
@@ -69,7 +67,7 @@ function createRole(event) {
         // If server returned status as success, then display success message
         else {
           newNotification("Role created successfully.");
-            window.location.reload();
+          window.location.reload();
         }
       });
   }
@@ -85,9 +83,13 @@ function createRole(event) {
 let fieldElements = Object.values(fields);
 // console.log(fieldElements);
 fieldElements.forEach((element) => {
-  element.onfocus = (e) => {
-    if (e.target.classList.contains("empty-field")) {
-      e.target.classList.remove("empty-field");
-    }
-  };
+  if (element) {
+    element.onfocus = (e) => {
+      if (e.target.classList.contains("empty-field")) {
+        e.target.classList.remove("empty-field");
+      }
+    };
+  }
 });
+
+export { createRole };
