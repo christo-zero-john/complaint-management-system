@@ -1,9 +1,5 @@
 console.log("My Complaints script connected loaded successfully");
 
-let server = "http://localhost/Complaint%20Management%20System/backend";
-
-myComplaints();
-
 function myComplaints() {
   newNotification("Starting to display your complaints");
   console.log("Fetching your complaints");
@@ -37,7 +33,7 @@ function myComplaints() {
       } else {
         newNotification("Complaints fetched successfully");
         let complaints = data.returned;
-        
+
         document.getElementById(
           "total-complaints"
         ).innerHTML = `<p class="text-center fs-3  fw-100 text-primary">Total Found ${complaints.length}</p>`;
@@ -78,8 +74,7 @@ function myComplaints() {
                     '<p class="text-success">Resolved</p>') ||
                   (complaint.status == 3 &&
                     '<p class="text-danger">Rejected</p>') ||
-                  (complaint.status == 4 &&
-                    '<p class="text-danger">Closed</p>')
+                  (complaint.status == 4 && '<p class="text-danger">Closed</p>')
                 }
                 </p>
             </div>
@@ -88,3 +83,5 @@ function myComplaints() {
       }
     });
 }
+
+export { myComplaints };
