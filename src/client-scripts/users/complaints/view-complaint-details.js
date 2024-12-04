@@ -211,9 +211,11 @@ async function openModal(complaint) {
 
   div.innerHTML = offCanvasBody;
 
-  offCanvas = new bootstrap.Offcanvas(document.getElementById("off-canvas"));
+  let offCanvas = new bootstrap.Offcanvas(document.getElementById("off-canvas"));
 
   offCanvas.show();
 
   //   console.log(fields);
 }
+
+export { viewComplaintDetails };
