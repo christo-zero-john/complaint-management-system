@@ -1,7 +1,5 @@
 console.log("Create category script loaded successfully");
 
-const server = "http://localhost/Complaint%20Management%20System/backend";
-
 let fields = {
   "category-name": document.getElementById("category-name"),
   "category-description": document.getElementById("category-description"),
@@ -45,7 +43,7 @@ function createCategory(event) {
     };
 
     console.log("Creating new Category with data: ", request);
-    
+
     fetch(`${server}/api/categories/new-category.php`, request)
       .then((res) => res.json())
       .then((data) => {
@@ -69,7 +67,7 @@ function createCategory(event) {
         // If server returned status as success, then display success message
         else {
           newNotification("Category created successfully.");
-            // window.location.reload();
+          // window.location.reload();
         }
       });
   }
@@ -84,10 +82,15 @@ function createCategory(event) {
  */
 let fieldElements = Object.values(fields);
 // console.log(fieldElements);
+
 fieldElements.forEach((element) => {
-  element.onfocus = (e) => {
-    if (e.target.classList.contains("empty-field")) {
-      e.target.classList.remove("empty-field");
-    }
-  };
+  if (element) {
+    element.onfocus = (e) => {
+      if (e.target.classList.contains("empty-field")) {
+        e.target.classList.remove("empty-field");
+      }
+    };
+  }
 });
+
+export { createCategory };
