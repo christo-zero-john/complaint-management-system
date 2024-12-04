@@ -1,6 +1,5 @@
 console.log("View categories script connected loaded successfully");
 
-viewCategories();
 
 function viewCategories() {
   newNotification("Starting to display all categories");
@@ -30,9 +29,7 @@ function viewCategories() {
           adjustedDescription += "...";
 
           document.getElementById("categories").innerHTML += `     
-            <div class="department card col-10 col-sm-9 col-md-5 my-2 mx-md-2 py-3 hover-scale-11 transition-04" onclick="editCategory('${
-              category.id
-            }')">
+            <div class="department card col-10 col-sm-9 col-md-5 my-2 mx-md-2 py-3 hover-scale-11 transition-04" onclick="editCategory('${category.id}')">
                 <h3 class="name">${category.name}</h3>
                 <p class="desc small">${adjustedDescription}</p>
             </div>
@@ -41,3 +38,5 @@ function viewCategories() {
       }
     });
 }
+
+export { viewCategories };
