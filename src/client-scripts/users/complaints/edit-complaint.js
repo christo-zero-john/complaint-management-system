@@ -71,50 +71,50 @@ async function fetchMyComplaint(id) {
     });
 }
 
-async function fetchComplaintOld(CiD) {
-  console.log("Fetching complaint with id: ", CiD);
-  newNotification("Fetching complaint with id: " + CiD);
+// async function fetchComplaintOld(CiD) {
+//   console.log("Fetching complaint with id: ", CiD);
+//   newNotification("Fetching complaint with id: " + CiD);
 
-  startLoading();
+//   startLoading();
 
-  let userData = JSON.parse(localStorage.getItem("user")) || null;
-  console.log(userData);
-  let isAdmin = false;
-  if (
-    userData &&
-    userData.hasOwnProperty("roles") &&
-    userData.roles.includes("admin")
-  ) {
-    isAdmin = true;
-  }
+//   let userData = JSON.parse(localStorage.getItem("user")) || null;
+//   console.log(userData);
+//   let isAdmin = false;
+//   if (
+//     userData &&
+//     userData.hasOwnProperty("roles") &&
+//     userData.roles.includes("admin")
+//   ) {
+//     isAdmin = true;
+//   }
 
-  let request = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      is_admin: isAdmin,
-    }),
-  };
+//   let request = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       is_admin: isAdmin,
+//     }),
+//   };
 
-  return fetch(server + "/api/complaints/get-complaints.php")
-    .then((res) => res.text())
-    .then((data) => {
-      console.log(data);
-      if (data.status === "error") {
-        data.errors.forEach((error) => {
-          newNotification("An unexpected error occurred: " + error.details);
-        });
-        return null; // Return null or handle error appropriately
-      } else {
-        let complaints = data.returned;
-        let complaint = complaints.filter((item) => item.id == CiD);
-        newNotification(`${complaint[0].title} Complaint fetched successfully`);
-        return complaint[0];
-      }
-    });
-}
+//   return fetch(server + "/api/complaints/get-complaints.php")
+//     .then((res) => res.text())
+//     .then((data) => {
+//       console.log(data);
+//       if (data.status === "error") {
+//         data.errors.forEach((error) => {
+//           newNotification("An unexpected error occurred: " + error.details);
+//         });
+//         return null; // Return null or handle error appropriately
+//       } else {
+//         let complaints = data.returned;
+//         let complaint = complaints.filter((item) => item.id == CiD);
+//         newNotification(`${complaint[0].title} Complaint fetched successfully`);
+//         return complaint[0];
+//       }
+//     });
+// }
 
 async function newCanvas(complaint) {
   console.log("Displaying complaint: ", complaint);
@@ -198,3 +198,5 @@ function saveComplaint() {
       }
     });
 }
+
+export { editComplaint };
