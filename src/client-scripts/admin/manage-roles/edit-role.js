@@ -1,4 +1,4 @@
-let fieldsValues = {
+window.fieldsValues = {
   "role-name": null,
   "role-description": null,
   "role-id": null,
@@ -9,9 +9,9 @@ let offCanvas;
 async function editRole(id) {
   console.log("Displaying role with ID: ", id);
   let role = await fetchRole(id);
-  fieldsValues["role-name"] = role.name;
-  fieldsValues["role-description"] = role.description;
-  fieldsValues["role-id"] = role.id;
+  window.fieldsValues["role-name"] = role.name;
+  window.fieldsValues["role-description"] = role.description;
+  window.fieldsValues["role-id"] = role.id;
   newCanvas(role);
 }
 
@@ -85,9 +85,9 @@ async function newCanvas(role) {
 }
 
 function setFieldValues(event) {
-  console.log("Updating fieldsValues");
-  fieldsValues[event.target.id] = event.target.value;
-  console.log("fieldsValues changed: ", fieldsValues);
+  console.log("Updating  window.fieldsValues");
+  window.fieldsValues[event.target.id] = event.target.value;
+  console.log(" window.fieldsValues changed: ", window.fieldsValues);
 }
 
 function saveRole() {
@@ -96,9 +96,9 @@ function saveRole() {
   startLoading();
 
   let requestData = {
-    name: fieldsValues["role-name"],
-    description: fieldsValues["role-description"],
-    id: fieldsValues["role-id"],
+    name: window.fieldsValues["role-name"],
+    description: window.fieldsValues["role-description"],
+    id: window.fieldsValues["role-id"],
   };
 
   let request = {
@@ -125,3 +125,5 @@ function saveRole() {
       }
     });
 }
+
+export { editRole };
