@@ -39,7 +39,7 @@ function reOpenComplaint(id) {
     .addEventListener("click", function () {
       confirmReopenComplaint(id);
       newNotification(`Confirmed Re Opening of complaint with id: ${id}`);
-      bootstrapModal.hide();
+      document.body.removeChild(bootstrapModal);
     });
 
   // Remove modal from document after hiding
@@ -82,3 +82,5 @@ function confirmReopenComplaint(CiD) {
       }
     });
 }
+
+export { reOpenComplaint };
