@@ -1,29 +1,40 @@
-- Create a mechanism where private complaints are also fetched when user id is specified in get-complaints.
--
+# Things to be done
 
-- When someone creates account redirect to User dashboard
-- When someone creates account and user is admin redirect to Admin dashboard
-- Only logged in users could perform operations.
-- Only admins could log in to admin dashboard.
+## User Interface
 
-Complaint Analytics Dashboard:
-Implement a data visualization dashboard for administrators to view trends, common issues, and resolution times. This could help in identifying recurring problems and improving overall complaint handling efficiency.
-Mobile Application:
-Develop a mobile app version of the system for both iOS and Android platforms, allowing users to submit and track complaints on-the-go.
-AI-powered Complaint Categorization:
-Implement a machine learning algorithm to automatically categorize complaints based on their content, reducing manual effort and improving routing accuracy.
-Automated Escalation System:
-Create an automated system that escalates unresolved complaints to higher authorities after a set period, ensuring no complaint is left unattended.
-Integration with College Systems:
-Integrate the Complaint Management System with other college systems (e.g., student management system, HR system) for seamless data flow and user management.
-Anonymous Complaint Feature:
-Add an option for users to submit anonymous complaints for sensitive issues, while still allowing administrators to manage and resolve these complaints.
-Feedback and Rating System:
-Implement a feature allowing users to rate their satisfaction with complaint resolution and provide feedback, helping to improve the overall service quality.
-Multi-language Support:
-Add support for multiple languages to make the system more accessible to a diverse user base. 9. Complaint Templates:
-Create pre-defined templates for common types of complaints to streamline the submission process for users.
-Bulk Complaint Management:
-Develop tools for administrators to handle multiple similar complaints simultaneously, improving efficiency in addressing widespread issues. 11. Advanced Search and Filtering:
-Implement more advanced search and filtering options for both users and administrators to easily find specific complaints or trends.
+- [ ] Modify the entire UI to use modern looking interface.
 
+## Functionalities
+
+### Common Functionalities
+
+- [ ] Feature to logout of account.
+- [ ] When someone creates account or logs into their account redirect to User dashboard.
+- [ ] Give admin dashboard access only to admins.
+- [ ] Create Functionality to grant different roles to users.
+- [ ] Make it so that only admin has access to admin things.
+- [ ] Make it so that only logged in users could perform operations.
+- [ ] Let Users request for specific roles
+- [ ] Give Admins permission to assign roles to users.
+- [ ] Let Admins approve or reject user role requests.
+- [ ] Modify notifications to be tracked in a stack and display as a notification icon.
+- [ ] Show only critical notifications as pop-ups.
+
+### Major Functionalities
+
+- [ ] Create Complaint Review admin dashboard and functionalities for:
+
+  - [ ] View Assigned Complaints
+  - [ ] Forward assigned complaints to someone else.
+  - [ ] Change status of complaints.
+  - [ ] Resolve complaint and provide report.
+  - [ ] Reject complaint and provide report.
+
+- [ ] Allow complainants to provide feedback for the resolved complaints.
+
+## Code Refactoring
+
+- [ ] Object Oriented Approach: Refactor code so that it uses an object oriented approach. Encapsulate related functions into classes.
+- [ ] Modularize code: Make the code more modular by breaking it down into smaller functions, each responsible for a specific task.
+- [ ] Import all modules in a single js file and import that file in the html files.
+- [ ]
