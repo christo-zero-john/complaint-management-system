@@ -10,7 +10,9 @@
   <body class="en-Oxanium transition-05">
     <div class="row h-fit">
       <form class="mx-auto text-center col-md-9" action="" method="">
-        <a href="./all-complaints.html" class="btn btn-success m-2 float-end d-inline"
+        <a
+          href="./all-complaints.html"
+          class="btn btn-success m-2 float-end d-inline"
           >All Complaints</a
         >
         <h1 class="m-2 wd-fit d-inline">Create New Complaint</h1>
@@ -59,6 +61,29 @@
           Create New Complaint
         </button>
       </form>
+
+      <!-- Script to fetch departments and categories -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          fetchCategories().then((categories) => {
+            categories.forEach((category) => {
+              document.getElementById(
+                "complaint-category"
+              ).innerHTML += ` <option value="${category.id}">${category.name}</option>
+          `;
+            });
+          });
+
+          fetchDepartments().then((departments) => {
+            departments.forEach((department) => {
+              document.getElementById(
+                "complaint-department"
+              ).innerHTML += ` <option value="${department.id}">${department.name}</option>
+          `;
+            });
+          });
+        });
+      </script>
     </div>
 
     <!-- Bootstrap Files -->
@@ -77,19 +102,10 @@
     <!-- Load Intenste css  -->
     <link rel="stylesheet" href="../../styles/defaults.css" />
 
-    <!-- Print notifications -->
-    <script src="../../client-scripts/modules/new-notification.js"></script>
-
-    <!-- Get User By ID -->
-    <script src="../../client-scripts/modules/get-user-by-id.js"></script>
-
-    <!-- Get Start Loading -->
-    <script src="../../client-scripts/modules/start-loading.js"></script>
-
-    <!-- Get Stop Loading -->
-    <script src="../../client-scripts/modules/stop-loading.js"></script>
-
-    <!-- Create New Complaint -->
-    <script src="../../client-scripts/users/complaints/create-complaint.js"></script>
+    <!-- JavaScript Universal lient Scripts Importer -->
+    <script
+      src="../../client-scripts/modules/importer.js"
+      type="module"
+    ></script>
   </body>
 </html>
