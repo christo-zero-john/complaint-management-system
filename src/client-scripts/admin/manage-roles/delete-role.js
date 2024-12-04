@@ -1,14 +1,14 @@
 function deleteRole() {
-    // Create modal element
-    let modal = document.createElement("div");
-    modal.className = "modal fade";
-    modal.setAttribute("tabindex", "-1");
-    modal.setAttribute("role", "dialog");
-    modal.setAttribute("aria-labelledby", "confirmDeleteModalLabel");
-    modal.setAttribute("aria-hidden", "true");
-  
-    // Set modal content
-    let modalContent = `
+  // Create modal element
+  let modal = document.createElement("div");
+  modal.className = "modal fade";
+  modal.setAttribute("tabindex", "-1");
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-labelledby", "confirmDeleteModalLabel");
+  modal.setAttribute("aria-hidden", "true");
+
+  // Set modal content
+  let modalContent = `
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -25,63 +25,64 @@ function deleteRole() {
             </div>
           </div>
         `;
-  
-    modal.innerHTML = modalContent;
-    document.body.appendChild(modal);
-  
-    // Initialize and show the modal
-    let bootstrapModal = new bootstrap.Modal(modal);
-    bootstrapModal.show();
-  
-    // Add event listener for the confirm button
-    document
-      .getElementById("confirmDeleteButton")
-      .addEventListener("click", function () {
-        confirmDeleteRole();
-        newNotification(
-          `Confirmed Deletion of department: ${fieldsValues["department-name"]} with id ${fieldsValues["department-id"]}`
-        );
-        bootstrapModal.hide();
-      });
-  
-    // Remove modal from decoument after hiding
-    modal.addEventListener("hidden.bs.modal", function () {
-      modal.remove();
+
+  modal.innerHTML = modalContent;
+  document.body.appendChild(modal);
+
+  // Initialize and show the modal
+  let bootstrapModal = new bootstrap.Modal(modal);
+  bootstrapModal.show();
+
+  // Add event listener for the confirm button
+  document
+    .getElementById("confirmDeleteButton")
+    .addEventListener("click", function () {
+      confirmDeleteRole();
       newNotification(
-        "Successfully Cancelled Delete Operation. Role <b>Not Deleted</b>"
+        `Confirmed Deletion of department: ${window.fieldsValues["department-name"]} with id ${window.fieldsValues["department-id"]}`
       );
+      bootstrapModal.hide();
     });
-  }
-  
-  function confirmDeleteRole() {
-    newNotification("Started Deleting Role");
-    let requestData = {
-      id: fieldsValues["role-id"],
-    };
-  
-    let request = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    };
-  
-    console.log("Deketing Role with: ", request);
-  
-    fetch(`${server}/api/roles/delete-role.php`, request)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.status == "error") {
-          newNotification("Some Unexpected Error Occurred");
-          data.errors.forEach((error) => {
-            newNotification(error.details, 30000);
-          });
-        } else {
-          newNotification("Role <b>Deleted Successfully</b>");
-          window.location.reload();
-        }
-      });
-  }
-  
+
+  // Remove modal from decoument after hiding
+  modal.addEventListener("hidden.bs.modal", function () {
+    modal.remove();
+    newNotification(
+      "Successfully Cancelled Delete Operation. Role <b>Not Deleted</b>"
+    );
+  });
+}
+
+function confirmDeleteRole() {
+  newNotification("Started Deleting Role");
+  let requestData = {
+    id: window.fieldsValues["role-id"],
+  };
+
+  let request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestData),
+  };
+
+  console.log("Deketing Role with: ", request);
+
+  fetch(`${server}/api/roles/delete-role.php`, request)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.status == "error") {
+        newNotification("Some Unexpected Error Occurred");
+        data.errors.forEach((error) => {
+          newNotification(error.details, 30000);
+        });
+      } else {
+        newNotification("Role <b>Deleted Successfully</b>");
+        window.location.reload();
+      }
+    });
+}
+
+export { deleteRole };
