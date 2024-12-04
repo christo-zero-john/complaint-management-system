@@ -1,7 +1,5 @@
 console.log("View roles script connected loaded successfully");
 
-viewRoles();
-
 function viewRoles() {
   newNotification("Starting to display all roles");
   newNotification("Fetching all roles");
@@ -38,3 +36,5 @@ function viewRoles() {
       }
     });
 }
+
+export { viewRoles };
