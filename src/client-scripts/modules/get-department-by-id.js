@@ -21,3 +21,5 @@ async function fetchDepartment(DiD) {
       }
     });
 }
+
+export { fetchDepartment };
