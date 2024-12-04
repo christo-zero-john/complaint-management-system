@@ -11,7 +11,7 @@ async function getUserById(UiD) {
           id: UiD,
         }),
       };
-      return fetch(server + "/api/user/get-user-by-id.php", request)
+      return fetch(config.server + "/api/user/get-user-by-id.php", request)
         .then((res) => res.json())
         .then((data) => {
           return data.returned;
@@ -23,3 +23,5 @@ async function getUserById(UiD) {
     return null;
   }
 }
+
+export { getUserById };
