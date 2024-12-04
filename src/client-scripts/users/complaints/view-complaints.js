@@ -5,8 +5,6 @@ if (typeof server === "undefined") {
   var server = "http://localhost/Complaint%20Management%20System/backend";
 }
 
-viewComplaints();
-
 async function viewComplaints() {
   newNotification("Starting to display all complaints");
   console.log("Fetching all complaints");
@@ -107,3 +105,5 @@ async function viewComplaints() {
       }
     });
 }
+
+export { viewComplaints };
