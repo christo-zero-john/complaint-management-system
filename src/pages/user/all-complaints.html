@@ -12,7 +12,11 @@
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
         id="complaints"
-      ></div>
+      >
+        <script>
+          document.addEventListener("DOMContentLoaded", () => viewComplaints());
+        </script>
+      </div>
     </div>
 
     <!-- Bootstrap Files -->
@@ -31,40 +35,10 @@
     <!-- Load Intenste css  -->
     <link rel="stylesheet" href="../../styles/defaults.css" />
 
-    <!-- Print notifications -->
-    <script src="../../client-scripts/modules/new-notification.js"></script>
-
-    <!-- Get User By ID -->
-    <script src="../../client-scripts/modules/get-user-by-id.js"></script>
-
-    <!-- Get Start Loading -->
-    <script src="../../client-scripts/modules/start-loading.js"></script>
-
-    <!-- Get Stop Loading -->
-    <script src="../../client-scripts/modules/stop-loading.js"></script>
-
-    <!-- Get Category By Id -->
-    <script src="../../client-scripts/modules/get-category-by-id.js"></script>
-
-    <!-- Get Department By Id -->
-    <script src="../../client-scripts/modules/get-department-by-id.js"></script>
-
-    <!-- View Complaints -->
-    <script src="../../client-scripts/users/complaints/view-complaints.js"></script>
-
-    <!-- View Complaint details -->
-    <script src="../../client-scripts/users/complaints/view-complaint-details.js"></script>
-
-    <!--Edit Complaint details -->
-    <script src="../../client-scripts/users/complaints/edit-complaint.js"></script>
-
-    <!-- Delete Complaint -->
-    <script src="../../client-scripts/users/complaints/delete-complaint.js"></script>
-
-    <!-- Close Complaint -->
-    <script src="../../client-scripts/users/complaints/close-complaint.js"></script>
-
-    <!-- Re Open Complaint -->
-    <script src="../../client-scripts/users/complaints/reopen-complaint.js"></script>
+    <!-- JavaScript Universal lient Scripts Importer -->
+    <script
+      src="../../client-scripts/modules/importer.js"
+      type="module"
+    ></script>
   </body>
 </html>
