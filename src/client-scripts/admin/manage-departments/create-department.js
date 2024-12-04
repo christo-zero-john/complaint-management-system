@@ -2,6 +2,12 @@ console.log("Create department script loaded successfully");
 
 const server = "http://localhost/Complaint%20Management%20System/backend";
 
+window.fieldsValues = {
+  "department-name": null,
+  "department-description": null,
+  "department-head": null,
+};
+
 let fields = {
   "department-name": document.getElementById("department-name"),
   "department-description": document.getElementById("department-description"),
@@ -68,7 +74,7 @@ function createDepartment(event) {
         // If server returned status as success, then display success message
         else {
           newNotification("Department created successfully.");
-          window.location.reload();
+          // window.location.reload();
         }
       });
   }
@@ -84,9 +90,13 @@ function createDepartment(event) {
 let fieldElements = Object.values(fields);
 // console.log(fieldElements);
 fieldElements.forEach((element) => {
-  element.onfocus = (e) => {
-    if (e.target.classList.contains("empty-field")) {
-      e.target.classList.remove("empty-field");
-    }
-  };
+  if (element) {
+    element.onfocus = (e) => {
+      if (e.target.classList.contains("empty-field")) {
+        e.target.classList.remove("empty-field");
+      }
+    };
+  }
 });
+
+export { createDepartment };
