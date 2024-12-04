@@ -1,4 +1,4 @@
-let fieldsValues = {
+window.fieldsValues = {
   "department-name": null,
   "department-description": null,
   "department-head": null,
@@ -10,10 +10,10 @@ let offCanvas;
 async function editDepartment(id) {
   console.log("Displaying department with ID: ", id);
   let department = await fetchDepartment(id);
-  fieldsValues["department-name"] = department.name;
-  fieldsValues["department-description"] = department.description;
-  fieldsValues["department-head"] = department.head;
-  fieldsValues["department-id"] = department.id;
+  window.fieldsValues["department-name"] = department.name;
+  window.fieldsValues["department-description"] = department.description;
+  window.fieldsValues["department-head"] = department.head;
+  window.fieldsValues["department-id"] = department.id;
   newCanvas(department);
 }
 
@@ -53,7 +53,7 @@ async function newCanvas(department) {
   } else {
     div = document.getElementById("offcanvas-parent");
   }
-  
+
   let departmentHeadName = "";
   if (department.head) {
     let departmentHead = await getUserById(department.head);
@@ -110,12 +110,6 @@ async function newCanvas(department) {
   //   console.log(fields);
 }
 
-function setFieldValues(event) {
-  console.log("Updating fieldsValues");
-  fieldsValues[event.target.id] = event.target.value;
-  console.log("fieldsValues changed: ", fieldsValues);
-}
-
 async function renderUserNames(departmentHead) {
   let options = [];
   return fetch(server + "/api/user/get-all-users.php")
@@ -139,10 +133,10 @@ function saveDepartment() {
   startLoading();
 
   let requestData = {
-    name: fieldsValues["department-name"],
-    description: fieldsValues["department-description"],
-    head: fieldsValues["department-head"],
-    id: fieldsValues["department-id"],
+    name: window.fieldsValues["department-name"],
+    description: window.fieldsValues["department-description"],
+    head: window.fieldsValues["department-head"],
+    id: window.fieldsValues["department-id"],
   };
 
   let request = {
@@ -165,7 +159,7 @@ function saveDepartment() {
       } else {
         newNotification("Department Updated Successfully.");
         stopLoading();
-        window.location.reload();
+        // window.location.reload();
       }
     });
 }
@@ -183,4 +177,4 @@ function saveDepartment() {
  * ✅ Update department with new values in database.
  */
 
-// editDepartment(7);
+export { editDepartment, saveDepartment };
