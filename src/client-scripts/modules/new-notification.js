@@ -9,6 +9,7 @@ function newNotification(message, timeout) {
     div.id = "warning-div";
     document.body.appendChild(div);
   }
+
   let warningDiv = document.getElementById("warning-div");
 
   warningDiv.classList =
@@ -16,7 +17,8 @@ function newNotification(message, timeout) {
 
   // Create toast element
   let toast = document.createElement("div");
-  toast.className = "toast align-items-center m-3 border border-success overflow-auto";
+  toast.className =
+    "toast align-items-center m-3 border border-success overflow-auto";
   toast.setAttribute("role", "alert");
   toast.setAttribute("aria-live", "assertive");
   toast.setAttribute("aria-atomic", "true");
@@ -52,3 +54,5 @@ function newNotification(message, timeout) {
 
   console.log(message);
 }
+
+export { newNotification };
