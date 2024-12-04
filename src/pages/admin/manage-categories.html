@@ -46,7 +46,13 @@
         <div
           class="row d-flex flex-row justify-content-around align-items-center"
           id="categories"
-        ></div>
+        >
+          <script>
+            window.addEventListener("DOMContentLoaded", () => {
+              viewCategories();
+            });
+          </script>
+        </div>
       </div>
     </div>
 
@@ -66,31 +72,10 @@
     <!-- Load Intense css  -->
     <link rel="stylesheet" href="../../styles/defaults.css" />
 
-    <!-- Print notifications -->
-    <script src="../../client-scripts/modules/new-notification.js"></script>
-
-    <!-- Get User By ID -->
-    <script src="../../client-scripts/modules/get-user-by-id.js"></script>
-
-    <!-- Get Start Loading -->
-    <script src="../../client-scripts/modules/start-loading.js"></script>
-
-    <!-- Get Stop Loading -->
-    <script src="../../client-scripts/modules/stop-loading.js"></script>
-
-    <!-- Create New Category -->
+    <!-- JavaScript Universal lient Scripts Importer -->
     <script
-      src="../../client-scripts/admin/manage-categories/create-category.js"
-      -category.js
+      src="../../client-scripts/modules/importer.js"
+      type="module"
     ></script>
-
-    <!-- View all Category -->
-    <script src="../../client-scripts/admin/manage-categories/view-categories.js"></script>
-
-    <!-- Edit Category -->
-    <script src="../../client-scripts/admin/manage-categories/edit-category.js"></script>
-
-    <!-- Delete Category -->
-    <script src="../../client-scripts/admin/manage-categories/delete-category.js"></script>
   </body>
 </html>
