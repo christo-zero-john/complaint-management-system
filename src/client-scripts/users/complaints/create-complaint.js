@@ -2,9 +2,6 @@ console.log("Create complaint script loaded successfully");
 
 const server = "http://localhost/Complaint%20Management%20System/backend";
 
-fetchCategories();
-fetchDepartments();
-
 let fields = {
   "complaint-title": document.getElementById("complaint-title"),
   "complaint-description": document.getElementById("complaint-description"),
@@ -94,10 +91,11 @@ function createComplaint(event) {
   }
 }
 
-function fetchCategories() {
+// Fetch department and fetch categories are called from the new-complaint.html
+async function fetchCategories() {
   newNotification("Fetching all categories");
 
-  fetch(`${server}/api/categories/get-categories.php`)
+  return fetch(`${server}/api/categories/get-categories.php`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -111,20 +109,15 @@ function fetchCategories() {
 
         newNotification("Setting Category options");
 
-        categories.forEach((category) => {
-          fields[
-            "complaint-category"
-          ].innerHTML += ` <option value="${category.id}">${category.name}</option>
-          `;
-        });
+        return categories;
       }
     });
 }
 
-function fetchDepartments() {
+async function fetchDepartments() {
   newNotification("Fetching all departments");
 
-  fetch(`${server}/api/departments/get-departments.php`)
+  return fetch(`${server}/api/departments/get-departments.php`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -138,12 +131,7 @@ function fetchDepartments() {
 
         newNotification("Setting Department options");
 
-        departments.forEach((department) => {
-          fields[
-            "complaint-department"
-          ].innerHTML += ` <option value="${department.id}">${department.name}</option>
-          `;
-        });
+        return departments;
       }
     });
 }
@@ -166,9 +154,13 @@ function getToday() {
 let fieldElements = Object.values(fields);
 // console.log(fieldElements);
 fieldElements.forEach((element) => {
-  element.onfocus = (e) => {
-    if (e.target.classList.contains("empty-field")) {
-      e.target.classList.remove("empty-field");
-    }
-  };
+  if (element) {
+    element.onfocus = (e) => {
+      if (e.target.classList.contains("empty-field")) {
+        e.target.classList.remove("empty-field");
+      }
+    };
+  }
 });
+
+export { createComplaint, fetchCategories, fetchDepartments };
