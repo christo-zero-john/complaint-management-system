@@ -36,7 +36,13 @@
         id="login-password"
         name="password"
       />
-      <button class="btn btn-success inline-block w-25" type="button" onclick="loginToAccount()">Login</button>
+      <button
+        class="btn btn-success inline-block w-25"
+        type="button"
+        onclick="loginToAccount()"
+      >
+        Login
+      </button>
       <p>
         Don't have an account yet?<span onclick="show('signup-form')"
           >Signup</span
@@ -78,7 +84,13 @@
         placeholder="Confirm Password"
         id="signup-confirm-password"
       />
-      <button class="btn btn-success inline-block w-25" type="button" onclick="createAccount()">Create Account</button>
+      <button
+        class="btn btn-success inline-block w-25"
+        type="button"
+        onclick="createAccount()"
+      >
+        Create Account
+      </button>
 
       <input required class="hidden" type="text" value="signup" id="ctx" />
       <p>
@@ -99,7 +111,13 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="../../client-scripts/modules/new-notification.js"></script>
+    <!-- JavaScript Universal lient Scripts Importer -->
+    <script
+      src="../../client-scripts/modules/importer.js"
+      type="module"
+    ></script>
+
+    <!-- Login/Signup Script -->
     <script src="../../client-scripts/users/signup-login.js"></script>
   </body>
 </html>
