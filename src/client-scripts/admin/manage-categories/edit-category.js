@@ -1,4 +1,4 @@
-let fieldsValues = {
+window.fieldsValues = {
   "category-name": null,
   "category-description": null,
   "category-id": null,
@@ -9,9 +9,9 @@ let offCanvas;
 async function editCategory(id) {
   console.log("Displaying category with ID: ", id);
   let category = await fetchCategory(id);
-  fieldsValues["category-name"] = category.name;
-  fieldsValues["category-description"] = category.description;
-  fieldsValues["category-id"] = category.id;
+  window.fieldsValues["category-name"] = category.name;
+  window.fieldsValues["category-description"] = category.description;
+  window.fieldsValues["category-id"] = category.id;
   newCanvas(category);
 }
 
@@ -84,21 +84,15 @@ async function newCanvas(category) {
   //   console.log(fields);
 }
 
-function setFieldValues(event) {
-  console.log("Updating fieldsValues");
-  fieldsValues[event.target.id] = event.target.value;
-  console.log("fieldsValues changed: ", fieldsValues);
-}
-
 function saveCategory() {
   offCanvas.hide();
   newNotification("start saving category");
   startLoading();
 
   let requestData = {
-    name: fieldsValues["category-name"],
-    description: fieldsValues["category-description"],
-    id: fieldsValues["category-id"],
+    name: window.fieldsValues["category-name"],
+    description: window.fieldsValues["category-description"],
+    id: window.fieldsValues["category-id"],
   };
 
   let request = {
@@ -125,3 +119,5 @@ function saveCategory() {
       }
     });
 }
+
+export { editCategory };
