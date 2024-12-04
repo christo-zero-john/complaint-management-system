@@ -45,7 +45,13 @@
         <div
           class="row d-flex flex-row justify-content-around align-items"
           id="departments"
-        ></div>
+        >
+          <script>
+            window.addEventListener("DOMContentLoaded", () => {
+              viewDepartments();
+            });
+          </script>
+        </div>
       </div>
     </div>
 
@@ -65,28 +71,11 @@
     <!-- Load Intenste css  -->
     <link rel="stylesheet" href="../../styles/defaults.css" />
 
-    <!-- Print notifications -->
-    <script src="../../client-scripts/modules/new-notification.js"></script>
+    <!-- JavaScript Universal lient Scripts Importer -->
+    <script
+      src="../../client-scripts/modules/importer.js"
+      type="module"
+    ></script>
 
-    <!-- Get User By ID -->
-    <script src="../../client-scripts/modules/get-user-by-id.js"></script>
-
-    <!-- Get Start Loading -->
-    <script src="../../client-scripts/modules/start-loading.js"></script>
-
-    <!-- Get Stop Loading -->
-    <script src="../../client-scripts/modules/stop-loading.js"></script>
-
-    <!-- Create New Department -->
-    <script src="../../client-scripts/admin/manage-departments/create-department.js"></script>
-
-    <!-- View all Department -->
-    <script src="../../client-scripts/admin/manage-departments/view-departments.js"></script>
-
-    <!-- Delete Department -->
-    <script src="../../client-scripts/admin/manage-departments/edit-department.js"></script>
-
-    <!-- Delete Department -->
-    <script src="../../client-scripts/admin/manage-departments/delete-department.js"></script>
   </body>
 </html>
