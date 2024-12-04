@@ -39,7 +39,7 @@ function deleteDepartment() {
     .addEventListener("click", function () {
       confirmDeleteDepartment();
       newNotification(
-        `Confirmed Deletion of department: ${fieldsValues["department-name"]} with id ${fieldsValues["department-id"]}`
+        `Confirmed Deletion of department: ${ window.fieldsValues["department-name"]} with id ${ window.fieldsValues["department-id"]}`
       );
       bootstrapModal.hide();
       modal.remove();
@@ -57,7 +57,7 @@ function deleteDepartment() {
 function confirmDeleteDepartment() {
   newNotification("Started Deleting Department");
   let requestData = {
-    id: fieldsValues["department-id"],
+    id:  window.fieldsValues["department-id"],
   };
 
   let request = {
@@ -83,3 +83,5 @@ function confirmDeleteDepartment() {
       }
     });
 }
+
+export { deleteDepartment };
