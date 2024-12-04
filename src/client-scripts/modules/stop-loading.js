@@ -4,3 +4,5 @@ function stopLoading() {
 
   loadingDiv.classList.add("hidden");
 }
+
+export { stopLoading };
