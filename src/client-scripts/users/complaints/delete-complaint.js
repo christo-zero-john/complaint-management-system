@@ -82,3 +82,5 @@ function confirmDeleteComplaint(CiD) {
       }
     });
 }
+
+export { deleteComplaint };
