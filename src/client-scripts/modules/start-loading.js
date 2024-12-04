@@ -11,3 +11,5 @@ function startLoading() {
   }
   loadingDiv.classList.remove("hidden");
 }
+
+export { startLoading };
