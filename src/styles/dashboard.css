@@ -1,0 +1,16 @@
+.dashboard-card {
+  transition: all 0.5s;
+}
+
+.dashboard-card:hover {
+  scale: 1.1;
+}
+
+.dashboard-card p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.dashboard-card-image {
+  width: 50px;
+}
