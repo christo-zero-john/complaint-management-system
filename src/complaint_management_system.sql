@@ -200,7 +200,6 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL,
   `created_on` varchar(12) NOT NULL,
-  `token` varchar(30) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
